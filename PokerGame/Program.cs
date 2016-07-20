@@ -57,6 +57,8 @@ namespace PokerGame
 
             HandType handTypeOne = EvaluateHand(sortedCards);
             HandType handTypeTwo = EvaluateHand(sortedCardsTwo);
+            Console.WriteLine(handTypeOne);
+            Console.WriteLine(handTypeTwo);
             Console.WriteLine(WinnerIs(handTypeOne, handTypeTwo));
             Console.ReadLine();
         }
@@ -85,6 +87,12 @@ namespace PokerGame
             return handOfCards;
         }
 
+        #region Methods
+        /// <summary>
+        /// Evaluate Hand
+        /// </summary>
+        /// <param name="cards">The sorted cards of type Card</param>
+        /// <returns></returns>
         static HandType EvaluateHand(Card[] cards)
         {
             if (isStraightFlush(cards) == true)
@@ -110,14 +118,17 @@ namespace PokerGame
         static string WinnerIs(HandType handOne, HandType handTwo)
         {
             if (handOne > handTwo)
-                return "THe winner is PLAYER ONE!!";
+                return "The winner is PLAYER ONE!!";
             else if (handOne < handTwo)
                 return "The winner is PLAYER TWO!!";
             else
                 return "It's a tie, deal with it later";
         }
 
-         static Rank[] GetRank(string[] cards)
+        #endregion
+
+        #region Helper Methods
+        static Rank[] GetRank(string[] cards)
         {
             Rank[] rankHand = new Rank[5];
             int count = 0;
@@ -304,5 +315,6 @@ namespace PokerGame
                 Console.WriteLine(element);
             }
         }
+        #endregion
     }
 }
